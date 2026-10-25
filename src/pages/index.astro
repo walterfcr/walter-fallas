@@ -1,16 +1,149 @@
+
+
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects } from '../data/projects.js';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="TU NOMBRE® — Diseñador gráfico"
+  description="Portafolio de diseño gráfico, identidad visual, editorial y dirección de arte."
+>
+  <section class="hero">
+    <p class="eyebrow reveal"
+      data-es="PORTAFOLIO INDEPENDIENTE · 2026"
+      data-en="INDEPENDENT PORTFOLIO · 2026">
+      PORTAFOLIO INDEPENDIENTE · 2026
+    </p>
+    <div class="hero-graphic" aria-hidden="true">
+      <div class="hero-graphic-circle"></div>
+      <div class="hero-graphic-arc"></div>
+    </div>
+
+    <h1 class="reveal">
+      <span data-es="Ideas visuales." data-en="Visual ideas.">Ideas visuales.</span>
+      <span data-es="Diseño con intención." data-en="Design with intent.">
+        Diseño con intención.
+      </span>
+    </h1>
+
+    <div class="hero-bottom reveal">
+      <div>
+        <p class="hero-copy"
+          data-es="Diseño gráfico, identidad visual y dirección de arte. Transformo ideas en sistemas visuales con carácter."
+          data-en="Graphic design, visual identity and art direction. I turn ideas into visual systems with character.">
+          Diseño gráfico, identidad visual y dirección de arte.
+          Transformo ideas en sistemas visuales con carácter.
+        </p>
+        <a class="text-link" href="#proyectos">
+          <span aria-hidden="true">↘</span>
+          <span data-es="EXPLORAR PROYECTOS" data-en="EXPLORE PROJECTS">
+            EXPLORAR PROYECTOS
+          </span>
+        </a>
+      </div>
+
+      <div class="hero-meta">
+        <span data-es="BASADO EN COSTA RICA" data-en="BASED IN COSTA RICA">
+          BASADO EN COSTA RICA
+        </span>
+        <span data-es="DISPONIBLE PARA PROYECTOS"
+          data-en="AVAILABLE FOR PROJECTS">
+          DISPONIBLE PARA PROYECTOS
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" id="proyectos">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow" data-es="01 / SELECCIÓN" data-en="01 / SELECTED WORK">
+          01 / SELECCIÓN
+        </p>
+        <h2 data-es="Proyectos seleccionados."
+          data-en="Selected work.">Proyectos seleccionados.</h2>
+      </div>
+      <span class="section-count">2024 — 2026 / 06</span>
+    </div>
+
+    <div class="project-grid">
+      {projects.map((project) => (
+        <article class="project-card reveal">
+          <a href={`/proyectos/${project.slug}`} aria-label={`${project.title.es} — ver proyecto`}>
+            <div class="project-visual" style={`--project-color: ${project.color}`}>
+              <img
+                src={project.gallery[0].image}
+                alt={`Vista del proyecto ${project.title.es}`}
+                loading="lazy"
+                onerror="this.style.display='none'"
+              />
+              <span class="project-placeholder" aria-hidden="true">
+                {project.title.es}
+              </span>
+            </div>
+
+            <div class="project-info">
+              <div>
+                <h3
+                  data-es={project.title.es}
+                  data-en={project.title.en}
+                >{project.title.es}</h3>
+                <p
+                  data-es={project.category.es}
+                  data-en={project.category.en}
+                >
+                  {project.category.es}
+                </p>
+              </div>
+              <span class="project-number">
+                {project.number} <span class="project-arrow" aria-hidden="true">↗</span>
+              </span>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section about-strip">
+    <div class="container about-grid">
+      <div class="reveal">
+        <p class="eyebrow" data-es="02 / ENFOQUE" data-en="02 / APPROACH">
+          02 / ENFOQUE
+        </p>
+        <h2 data-es="Pensar.<br />Diseñar.<br />Comunicar."
+          data-en="Think.<br />Design.<br />Communicate.">
+          Pensar.<br />Diseñar.<br />Comunicar.
+        </h2>
+      </div>
+
+      <div class="about-copy reveal">
+        <p
+          data-es="Me interesa el diseño que combina concepto, claridad y personalidad. Cada proyecto es una oportunidad para encontrar una idea sólida y traducirla en un lenguaje visual coherente."
+          data-en="I am interested in design that combines concept, clarity and character. Every project is an opportunity to find a strong idea and translate it into a coherent visual language.">
+          Me interesa el diseño que combina concepto, claridad y personalidad.
+          Cada proyecto es una oportunidad para encontrar una idea sólida y
+          traducirla en un lenguaje visual coherente.
+        </p>
+
+          <div class="service-list">
+            <span data-es="Identidad de marca" data-en="Branding">Identidad de marca</span>
+            <span data-es="Diseño editorial" data-en="Editorial design">Diseño editorial</span>
+            <span data-es="Dirección de arte" data-en="Art direction">Dirección de arte</span>
+            <span data-es="Campañas gráficas" data-en="Visual campaigns">Campañas gráficas</span>
+            <span data-es="Diseño para impresión" data-en="Print design">Diseño para impresión</span>
+          </div>
+
+        <p style="margin-top: 30px">
+          <a class="text-link" href="/sobre-mi">
+            <span data-es="CONOCER MÁS SOBRE MÍ"
+              data-en="MORE ABOUT ME">CONOCER MÁS SOBRE MÍ</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

@@ -1,0 +1,168 @@
+
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { projects } from '../../data/projects.js'
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }))
+}
+
+const { project } = Astro.props
+
+const index = projects.findIndex((item) => item.slug === project.slug)
+const nextProject = projects[(index + 1) % projects.length]
+
+const projectDetails = {
+  garage94: {
+    heading: {
+      es: 'Una identidad con espíritu underground.',
+      en: 'An identity with an underground spirit.',
+    },
+    concept: {
+      es: 'El logotipo toma como referencia los vinilos clásicos para construir la identidad de una tienda ficticia dedicada a la música alternativa y retro. La combinación de blanco, negro y fucsia busca equilibrar el carácter clásico del formato con una estética underground.',
+      en: 'The logo draws inspiration from classic vinyl records to build the identity of a fictional store dedicated to alternative and retro music. The combination of black, white and fuchsia balances the classic format with an underground aesthetic.',
+    },
+  },
+
+  'diseno-editorial': {
+    heading: {
+      es: 'Diseñar para informar y prevenir.',
+      en: 'Designing to inform and prevent.',
+    },
+    concept: {
+      es: 'Esta propuesta editorial explora la ingeniería social, sus métodos, casos reales y estrategias de prevención. La publicación utiliza una combinación de negro, azul, amarillo y gris claro, con Roboto como tipografía principal.',
+      en: 'This editorial concept explores social engineering, its methods, real cases and prevention strategies. The publication uses a combination of black, blue, yellow and light gray, with Roboto as its main typeface.',
+    },
+  },
+
+  'campana-reciclaje': {
+    heading: {
+      es: 'Una recompensa para cambiar hábitos.',
+      en: 'A reward for changing habits.',
+    },
+    concept: {
+      es: 'La campaña propone incentivar el reciclaje mediante una recompensa vinculada a la música en vivo: entradas para un concierto. Su lenguaje gráfico utiliza tonos verdes y amarillos para comunicar la propuesta de manera fresca y accesible a un público urbano joven.',
+      en: 'The campaign aims to encourage recycling through a reward connected to live music: concert tickets. Its visual language uses greens and yellows to communicate the idea in a fresh, approachable way to a young urban audience.',
+    },
+  },
+
+  'invitacion-boda-magica': {
+    heading: {
+      es: 'Una invitación para entrar en un mundo mágico.',
+      en: 'An invitation into a magical world.',
+    },
+    concept: {
+      es: 'Esta invitación de boda fue concebida para una pareja aficionada al universo de Harry Potter. La paleta de marrones y tonos cálidos, junto con una tipografía de inspiración medieval, ayuda a construir una propuesta acorde con la temática elegida.',
+      en: 'This wedding invitation was designed for a couple who love the Harry Potter universe. A palette of browns and warm tones, combined with medieval-inspired typography, creates a design that reflects the chosen theme.',
+    },
+  },
+}
+
+const details = projectDetails[project.slug]
+---
+
+<BaseLayout
+  title={`${project.title.es} — TU NOMBRE®`}
+  description={project.description.es}
+>
+  <section class="page-intro container">
+    <p class="eyebrow">
+      <span data-es="PROYECTO" data-en="PROJECT">PROYECTO</span>
+      / {project.number} — {project.year}
+    </p>
+
+    <h1 class="page-title" data-es={project.title.es} data-en={project.title.en}>
+      {project.title.es}
+    </h1>
+
+    <p class="page-lead" data-es={project.short.es} data-en={project.short.en}>
+      {project.short.es}
+    </p>
+  </section>
+
+<section class="project-hero container">
+  {project.gallery && (
+    <div class="project-gallery">
+      {project.gallery.map((item, i) => (
+        <figure class={`gallery-item gallery-item--${item.type}`}>
+          <img
+            src={item.image}
+            alt={item.alt.es}
+            loading={i === 0 ? 'eager' : 'lazy'}
+          />
+        </figure>
+      ))}
+    </div>
+  )}
+</section>
+
+  <section class="project-detail container">
+    <aside class="project-details-list">
+      <div class="detail-item">
+        <strong data-es="Año" data-en="Year">Año</strong>
+        <span>{project.year}</span>
+      </div>
+
+      <div class="detail-item">
+        <strong data-es="Disciplina" data-en="Discipline">
+          Disciplina
+        </strong>
+        <span data-es={project.category.es} data-en={project.category.en}>
+  {project.category.es}
+</span>
+      </div>
+
+      <div class="detail-item">
+        <strong data-es="Áreas" data-en="Areas">
+          Áreas
+        </strong>
+        <span
+  data-es={project.services.es.join(' · ')}
+  data-en={project.services.en.join(' · ')}
+>
+  {project.services.es.join(' · ')}
+</span>
+      </div>
+
+      <div class="detail-item">
+        <strong data-es="Enfoque" data-en="Focus">
+          Enfoque
+        </strong>
+        <span data-es="Proyecto conceptual" data-en="Concept project">
+          Proyecto conceptual
+        </span>
+      </div>
+    </aside>
+
+    <div class="project-story">
+      <p class="eyebrow" data-es="EL CONCEPTO" data-en="THE CONCEPT">
+        EL CONCEPTO
+      </p>
+
+      <h2 data-es={details.heading.es} data-en={details.heading.en}>
+        {details.heading.es}
+      </h2>
+
+      <p data-es={details.concept.es} data-en={details.concept.en}>
+        {details.concept.es}
+      </p>
+    </div>
+  </section>
+
+  <section class="next-project container">
+    <p class="eyebrow" data-es="SIGUIENTE PROYECTO" data-en="NEXT PROJECT">
+      SIGUIENTE PROYECTO
+    </p>
+
+    <a href={`/proyectos/${nextProject.slug}`}>
+      <span data-es={nextProject.title.es} data-en={nextProject.title.en}>
+        {nextProject.title.es}
+      </span>
+
+      <span aria-hidden="true">↗</span>
+    </a>
+  </section>
+</BaseLayout>

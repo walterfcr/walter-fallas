@@ -1,0 +1,57 @@
+
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const email = 'hola@tudominio.com';
+---
+
+<BaseLayout
+  title="Contacto — TU NOMBRE®"
+  description="Hablemos de tu próximo proyecto de diseño."
+>
+  <section class="page-intro container reveal">
+    <p class="eyebrow" data-es="04 / CONTACTO" data-en="04 / CONTACT">
+      04 / CONTACTO
+    </p>
+    <h1 class="page-title"
+      data-es="¿Tienes una idea? Hagámosla realidad."
+      data-en="Have an idea? Let's make it happen.">
+      ¿Tienes una idea? Hagámosla realidad.
+    </h1>
+    <p class="page-lead"
+      data-es="Estoy abierto a colaboraciones, proyectos freelance y nuevas oportunidades profesionales."
+      data-en="I am open to collaborations, freelance projects and new professional opportunities.">
+      Estoy abierto a colaboraciones, proyectos freelance y nuevas
+      oportunidades profesionales.
+    </p>
+  </section>
+
+  <section class="container contact-layout reveal">
+    <div>
+      <p class="eyebrow" data-es="ESCRÍBEME" data-en="GET IN TOUCH">ESCRÍBEME</p>
+      <a class="footer-cta" style="font-size:clamp(32px,5vw,62px);overflow-wrap:anywhere"
+        href={`mailto:${email}`}>
+        {email} ↗
+      </a>
+      <p class="contact-note"
+        data-es="Cuéntame brevemente qué tienes en mente y cómo podemos trabajar juntos."
+        data-en="Tell me a little about your idea and how we could work together.">
+        Cuéntame brevemente qué tienes en mente y cómo podemos trabajar juntos.
+      </p>
+    </div>
+
+    <div class="contact-links">
+      <a class="contact-link" href={`mailto:${email}`}>
+        <span>Email</span><span aria-hidden="true">↗</span>
+      </a>
+      <a class="contact-link" href="https://www.behance.net/" target="_blank" rel="noreferrer">
+        <span>Behance</span><span aria-hidden="true">↗</span>
+      </a>
+      <a class="contact-link" href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+        <span>Instagram</span><span aria-hidden="true">↗</span>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+        <span>LinkedIn</span><span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

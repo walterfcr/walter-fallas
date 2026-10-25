@@ -1,0 +1,94 @@
+
+---
+import '../styles/global.css';
+
+const {
+  title = 'Portfolio — Diseñador gráfico',
+  description = 'Diseño gráfico, identidad visual y dirección de arte.',
+  lang = 'es'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0B1020" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#contenido"
+      data-es="Saltar al contenido"
+      data-en="Skip to content">Saltar al contenido</a>
+
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Inicio">
+        WALTER FALLAS<span>®</span>
+        <small data-es="DISEÑADOR GRÁFICO"
+          data-en="GRAPHIC DESIGNER">DISEÑADOR GRÁFICO</small>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="main-nav"
+        data-es="Abrir menú"
+        data-en="Open menu"
+      >MENÚ <span aria-hidden="true">+</span></button>
+
+      <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+        <a href="/#proyectos" data-es="Proyectos" data-en="Work">Proyectos</a>
+        <a href="/sobre-mi" data-es="Sobre mí" data-en="About">Sobre mí</a>
+        <a href="/contacto" data-es="Contacto ↗" data-en="Contact ↗">Contacto ↗</a>
+        <button class="language-toggle" type="button" aria-label="Cambiar idioma">
+          EN
+        </button>
+        <button
+          class="theme-toggle"
+          type="button"
+          aria-label="Cambiar a tema claro"
+        >
+          LIGHT
+        </button>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <span class="eyebrow" data-es="¿TIENES UNA IDEA?" data-en="HAVE AN IDEA?">
+          ¿TIENES UNA IDEA?
+        </span>
+        <a class="footer-cta reveal" href="/contacto"
+          data-es="Hablemos. ↗" data-en="Let's talk. ↗">Hablemos. ↗</a>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> WALTER FALLAS</span>
+        <span data-es="DISEÑADO CON INTENCIÓN."
+          data-en="DESIGNED WITH INTENTION.">DISEÑADO CON INTENCIÓN.</span>
+        <a href="#contenido" data-es="VOLVER ARRIBA ↑"
+          data-en="BACK TO TOP ↑">VOLVER ARRIBA ↑</a>
+      </div>
+    </footer>
+
+    <script>
+      import '../scripts/main.js';
+    </script>
+  </body>
+</html>
