@@ -28,10 +28,14 @@ const email = 'hola@tudominio.com';
   <section class="container contact-layout reveal">
     <div>
       <p class="eyebrow" data-es="ESCRÍBEME" data-en="GET IN TOUCH">ESCRÍBEME</p>
-      <a class="footer-cta" style="font-size:clamp(32px,5vw,62px);overflow-wrap:anywhere"
-        href={`mailto:${email}`}>
-        {email} ↗
-      </a>
+        <a
+          class="footer-cta"
+          style="font-size:clamp(32px,5vw,62px);overflow-wrap:anywhere"
+          href="#contacto"
+          data-email-link
+        >
+          <span data-email-text>Enviar un correo ↗</span>
+        </a>
       <p class="contact-note"
         data-es="Cuéntame brevemente qué tienes en mente y cómo podemos trabajar juntos."
         data-en="Tell me a little about your idea and how we could work together.">
@@ -40,17 +44,15 @@ const email = 'hola@tudominio.com';
     </div>
 
     <div class="contact-links">
-      <a class="contact-link" href={`mailto:${email}`}>
-        <span>Email</span><span aria-hidden="true">↗</span>
-      </a>
-      <a class="contact-link" href="https://www.behance.net/" target="_blank" rel="noreferrer">
-        <span>Behance</span><span aria-hidden="true">↗</span>
-      </a>
-      <a class="contact-link" href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-        <span>Instagram</span><span aria-hidden="true">↗</span>
-      </a>
-      <a class="contact-link" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+        <a class="contact-link" href="#contacto" data-email-link>
+          <span data-email-text>Email</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/walterfallas/" target="_blank" rel="noreferrer">
         <span>LinkedIn</span><span aria-hidden="true">↗</span>
+      </a>
+      <a class="contact-link" href="https://walterfallascr.com//" target="_blank" rel="noreferrer">
+        <span>Frontend Development</span><span aria-hidden="true">↗</span>
       </a>
     </div>
   </section>

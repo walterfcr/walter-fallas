@@ -156,3 +156,19 @@ try {
 } catch {
   setTheme('dark')
 }
+
+const user = 'hola'
+const domain = ['walterfallascr', 'com'].join('.')
+const email = `${user}@${domain}`
+
+document.querySelectorAll('[data-email-link]').forEach((link) => {
+  link.href = `mailto:${email}`
+
+  const text = link.querySelector('[data-email-text]')
+
+  if (text) {
+    text.textContent = link.classList.contains('footer-cta')
+      ? `${email} ↗`
+      : 'Email'
+  }
+})
