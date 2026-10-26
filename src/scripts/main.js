@@ -4,10 +4,29 @@ const menuButton = document.querySelector('.menu-toggle')
 const nav = document.querySelector('.main-nav')
 const themeButton = document.querySelector('.theme-toggle')
 
+// Cambiar las imágenes del proyecto editorial según el tema.
+
+function updateEditorialImages() {
+  document
+    .querySelectorAll('.project-gallery img[data-dark-src]')
+    .forEach((img) => {
+      const image =
+        root.dataset.theme === 'light'
+          ? img.dataset.lightSrc
+          : img.dataset.darkSrc
+
+      if (image) {
+        img.setAttribute('src', image)
+      }
+    })
+}
+
 function setTheme(theme) {
   const currentTheme = theme === 'light' ? 'light' : 'dark'
 
   root.dataset.theme = currentTheme
+
+  updateEditorialImages()
 
   if (themeButton) {
     themeButton.textContent = currentTheme === 'dark' ? 'LIGHT' : 'DARK'
@@ -110,7 +129,10 @@ nav?.querySelectorAll('a').forEach((link) => {
 
 // Año automático en el pie de página.
 const year = document.querySelector('#year')
-if (year) year.textContent = String(new Date().getFullYear())
+
+if (year) {
+  year.textContent = String(new Date().getFullYear())
+}
 
 // Ocultar imágenes que todavía no existen.
 document.querySelectorAll('.project-visual img').forEach((img) => {
@@ -151,12 +173,14 @@ try {
   setLanguage('es')
 }
 
+// Recuperar el tema seleccionado.
 try {
   setTheme(sessionStorage.getItem('portfolio-theme') || 'dark')
 } catch {
   setTheme('dark')
 }
 
+// Configurar el correo electrónico.
 const user = 'hola'
 const domain = ['walterfallascr', 'com'].join('.')
 const email = `${user}@${domain}`

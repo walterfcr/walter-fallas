@@ -83,6 +83,7 @@ const details = projectDetails[project.slug]
     </p>
   </section>
 
+
 <section class="project-hero container">
   {project.gallery && (
     <div class="project-gallery">
@@ -90,6 +91,14 @@ const details = projectDetails[project.slug]
         <figure class={`gallery-item gallery-item--${item.type}`}>
           <img
             src={item.image}
+            data-dark-src={item.image}
+            data-light-src={
+              item.image === '/revista-1-dark.webp'
+                ? '/revista-1-light.webp'
+                : item.image === '/revista-2-dark.webp'
+                  ? '/revista-2-light.webp'
+                  : item.image
+            }
             alt={item.alt.es}
             loading={i === 0 ? 'eager' : 'lazy'}
           />

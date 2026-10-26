@@ -98,7 +98,7 @@ export const projects = [
         type: 'portrait',
       },
       {
-        image: '/revista-1.webp',
+        image: '/revista-1-dark.webp',
         alt: {
           es: 'Revista de ingeniería social con páginas abiertas',
           en: 'Social engineering magazine with open pages',
@@ -106,7 +106,7 @@ export const projects = [
         type: 'landscape',
       },
       {
-        image: '/revista-2.webp',
+        image: '/revista-2-dark.webp',
         alt: {
           es: 'Segunda presentación de la revista con páginas abiertas',
           en: 'Second view of the magazine with open pages',
