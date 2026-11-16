@@ -9,6 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^5.0.0"
+    "astro": "^7.4.12",
+    "page-flip": "^2.0.7"
   }
 }
